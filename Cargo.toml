@@ -1,0 +1,9 @@
+[workspace]
+members = ["postgre_api_data", "postgre_api"]
+default-members = ["postgre_api_data", "postgre_api"]
+
+[profile.release]
+lto = true
+
+[profile.release.build-override]
+opt-level = 3

@@ -1,0 +1,2 @@
+connection = "postgres://postgres:admin@localhost/POSTGRE_API"
+server_address = "127.0.0.1:80"
