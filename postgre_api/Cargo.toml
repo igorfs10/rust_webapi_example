@@ -9,4 +9,4 @@ readme = "README.md"
 
 [dependencies]
 postgre_api_data = { path = "../postgre_api_data" }
-actix-web = "3.3.2"
+actix-web = "4.0.0-beta.4"

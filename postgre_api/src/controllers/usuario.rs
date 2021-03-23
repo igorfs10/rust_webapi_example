@@ -15,7 +15,7 @@ pub fn init(cfg: &mut web::ServiceConfig) {
 #[get("/usuarios")]
 async fn get_all() -> impl Responder {
     let response;
-    match Table::<Usuario>::get_all() {
+    match Table::<Usuario>::get_all().await {
         Ok(result) => {
             response = Response::new_response("Sucesso".to_string(), Some(result));
         }
@@ -27,9 +27,10 @@ async fn get_all() -> impl Responder {
 }
 
 #[get("/usuarios/{id}")]
-async fn get_by_id(web::Path(id): web::Path<i64>) -> impl Responder {
+async fn get_by_id(path: web::Path<i64>) -> impl Responder {
+    let id = path.into_inner();
     let response;
-    match Table::<Usuario>::get_by_id(id) {
+    match Table::<Usuario>::get_by_id(id).await {
         Ok(result) => {
             response = Response::new_response("Sucesso".to_string(), Some(result));
         }
@@ -43,7 +44,7 @@ async fn get_by_id(web::Path(id): web::Path<i64>) -> impl Responder {
 #[post("/usuarios")]
 async fn add(usuario: web::Json<Usuario>) -> impl Responder {
     let response: Response<bool>;
-    match Table::<Usuario>::add(usuario.into_inner()) {
+    match Table::<Usuario>::add(usuario.into_inner()).await {
         Ok(_) => {
             response = Response::new_response("Criado com sucesso".to_string(), None);
         }
@@ -57,7 +58,7 @@ async fn add(usuario: web::Json<Usuario>) -> impl Responder {
 #[put("/usuarios")]
 async fn update(usuario: web::Json<Usuario>) -> impl Responder {
     let response: Response<bool>;
-    match Table::<Usuario>::update(usuario.into_inner()) {
+    match Table::<Usuario>::update(usuario.into_inner()).await {
         Ok(_) => {
             response = Response::new_response("Atualizado com sucesso".to_string(), None);
         }
@@ -69,9 +70,10 @@ async fn update(usuario: web::Json<Usuario>) -> impl Responder {
 }
 
 #[delete("/usuarios/{id}")]
-async fn remove(web::Path(id): web::Path<i64>) -> impl Responder {
+async fn remove(path: web::Path<i64>) -> impl Responder {
+    let id = path.into_inner();
     let response: Response<bool>;
-    match Table::<Usuario>::remove(id) {
+    match Table::<Usuario>::remove(id).await {
         Ok(_) => {
             response = Response::new_response("Removido com sucesso".to_string(), None);
         }
