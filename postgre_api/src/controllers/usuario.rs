@@ -2,7 +2,7 @@ use actix_web::{delete, get, post, put, web, Responder};
 use postgre_api_data::structs::table::Table;
 use postgre_api_data::structs::usuario::Usuario;
 use postgre_api_data::structs::{response::Response, state::State};
-use postgre_api_data::traits::crud::CRUD;
+use postgre_api_data::traits::crud::Crud;
 
 pub fn init(cfg: &mut web::ServiceConfig) {
     cfg.service(get_all);

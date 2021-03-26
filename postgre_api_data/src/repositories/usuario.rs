@@ -8,10 +8,10 @@ use sqlx::{postgres::PgQueryResult, Pool, Postgres};
 
 use structs::table::Table;
 use structs::usuario::Usuario;
-use traits::crud::CRUD;
+use traits::crud::Crud;
 
 #[async_trait]
-impl CRUD for Table<Usuario> {
+impl Crud for Table<Usuario> {
     type IdType = i64;
     type TableType = Usuario;
 

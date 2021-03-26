@@ -4,7 +4,7 @@ use async_trait::async_trait;
 use sqlx::{postgres::PgQueryResult, Pool, Postgres};
 
 #[async_trait]
-pub trait CRUD {
+pub trait Crud {
     type IdType;
     type TableType;
 
