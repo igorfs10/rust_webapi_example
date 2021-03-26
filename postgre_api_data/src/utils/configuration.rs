@@ -3,7 +3,7 @@ use std::fs;
 
 use serde::{Deserialize, Serialize};
 
-const SETTINGS_FILE: &str = "postgre_api.toml";
+const SETTINGS_FILE: &str = "postgre_api.json";
 
 #[derive(Serialize, Deserialize)]
 pub struct ConfigurationFile {
@@ -19,6 +19,6 @@ impl ConfigurationFile {
         let arquivo = fs::read_to_string(&caminho_configuracao)
             .expect("Não foi possível ler o arquivo de configuração");
 
-        toml::from_str(&arquivo).expect("Não foi possível carregar dados do arquivo")
+        serde_json::from_str(&arquivo).expect("Não foi possível carregar dados do arquivo")
     }
 }

@@ -1,6 +1,7 @@
 [workspace]
 members = ["postgre_api_data", "postgre_api"]
-default-members = ["postgre_api_data", "postgre_api"]
+default-members = ["postgre_api"]
+resolver = "2"
 
 [profile.release]
 lto = true
