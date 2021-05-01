@@ -1,5 +1,4 @@
 use actix_web::{delete, get, post, put, web, Responder};
-use postgre_api_data::structs::table::Table;
 use postgre_api_data::structs::usuario::Usuario;
 use postgre_api_data::structs::{response::Response, state::State};
 use postgre_api_data::traits::crud::Crud;
@@ -21,7 +20,7 @@ async fn get() -> impl Responder {
 #[get("/usuarios")]
 async fn get_all(app_state: web::Data<State>) -> impl Responder {
     let response;
-    match Table::<Usuario>::get_all(app_state.db_pool.clone()).await {
+    match Usuario::get_all(app_state.db_pool.clone()).await {
         Ok(result) => {
             response = Response::new_response("Sucesso".to_string(), Some(result));
         }
@@ -36,7 +35,7 @@ async fn get_all(app_state: web::Data<State>) -> impl Responder {
 async fn get_by_id(app_state: web::Data<State>, path: web::Path<i64>) -> impl Responder {
     let id = path.into_inner();
     let response;
-    match Table::<Usuario>::get_by_id(app_state.db_pool.clone(), id).await {
+    match Usuario::get_by_id(app_state.db_pool.clone(), id).await {
         Ok(result) => {
             response = Response::new_response("Sucesso".to_string(), Some(result));
         }
@@ -50,7 +49,7 @@ async fn get_by_id(app_state: web::Data<State>, path: web::Path<i64>) -> impl Re
 #[post("/usuarios")]
 async fn add(app_state: web::Data<State>, usuario: web::Json<Usuario>) -> impl Responder {
     let response: Response<bool>;
-    match Table::<Usuario>::add(app_state.db_pool.clone(), usuario.into_inner()).await {
+    match Usuario::add(app_state.db_pool.clone(), usuario.into_inner()).await {
         Ok(_) => {
             response = Response::new_response("Criado com sucesso".to_string(), None);
         }
@@ -64,7 +63,7 @@ async fn add(app_state: web::Data<State>, usuario: web::Json<Usuario>) -> impl R
 #[put("/usuarios")]
 async fn update(app_state: web::Data<State>, usuario: web::Json<Usuario>) -> impl Responder {
     let response: Response<bool>;
-    match Table::<Usuario>::update(app_state.db_pool.clone(), usuario.into_inner()).await {
+    match Usuario::update(app_state.db_pool.clone(), usuario.into_inner()).await {
         Ok(_) => {
             response = Response::new_response("Atualizado com sucesso".to_string(), None);
         }
@@ -79,7 +78,7 @@ async fn update(app_state: web::Data<State>, usuario: web::Json<Usuario>) -> imp
 async fn remove(app_state: web::Data<State>, path: web::Path<i64>) -> impl Responder {
     let id = path.into_inner();
     let response: Response<bool>;
-    match Table::<Usuario>::remove(app_state.db_pool.clone(), id).await {
+    match Usuario::remove(app_state.db_pool.clone(), id).await {
         Ok(_) => {
             response = Response::new_response("Removido com sucesso".to_string(), None);
         }
