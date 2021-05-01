@@ -1,13 +1,16 @@
 mod controllers;
+mod utils;
 
 use actix_web::{web, App, HttpServer};
-use postgre_api_data::{structs::state::State, utils::configuration::ConfigurationFile};
+use rust_rest_api_example_data::structs::state::State;
+use utils::configuration::ConfigurationFile;
+use utils::connection;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let server_address = ConfigurationFile::get_configuration_file().server_address;
 
-    let app_state = web::Data::new(State::new().await);
+    let app_state = web::Data::new(State::new(connection::get_connection().await).await);
 
     println!("Running the server at {}", server_address);
     HttpServer::new(move || {

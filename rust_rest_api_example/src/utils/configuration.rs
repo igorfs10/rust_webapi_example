@@ -13,12 +13,7 @@ impl ConfigurationFile {
     pub fn get_configuration_file() -> Self {
         let caminho_executavel_full = env::current_exe().unwrap();
         let caminho = caminho_executavel_full.parent().unwrap().to_str().unwrap();
-        let nome_executavel = caminho_executavel_full
-            .file_stem()
-            .unwrap()
-            .to_str()
-            .unwrap();
-        let caminho_configuracao = format!("{}/{}.json", caminho, nome_executavel);
+        let caminho_configuracao = format!("{}/config.json", caminho);
         let arquivo = fs::read_to_string(&caminho_configuracao)
             .expect("Não foi possível ler o arquivo de configuração");
 

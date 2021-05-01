@@ -1,6 +1,6 @@
 [workspace]
-members = ["postgre_api_data", "postgre_api"]
-default-members = ["postgre_api"]
+members = ["rust_rest_api_example_data", "rust_rest_api_example"]
+default-members = ["rust_rest_api_example"]
 resolver = "2"
 
 [profile.release]

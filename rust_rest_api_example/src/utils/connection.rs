@@ -1,4 +1,4 @@
-use sqlx::{postgres::PgPoolOptions, Pool, Postgres};
+use rust_rest_api_example_data::sqlx::{postgres::PgPoolOptions, Pool, Postgres};
 
 use super::configuration::ConfigurationFile;
 
