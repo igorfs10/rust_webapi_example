@@ -1,7 +1,8 @@
 use std::sync::Arc;
 
-use sqlx::{Pool, Postgres};
+use rust_rest_api_example_data::sqlx::{Pool, Postgres};
 
+// Struct que vai ser com
 pub struct State {
     pub db_pool: Arc<Pool<Postgres>>,
 }

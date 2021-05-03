@@ -1,6 +1,7 @@
+use crate::structs::{response::Response, state::State};
+
 use actix_web::{delete, get, post, put, web, Responder};
 use rust_rest_api_example_data::structs::usuario::Usuario;
-use rust_rest_api_example_data::structs::{response::Response, state::State};
 use rust_rest_api_example_data::traits::crud::Crud;
 
 pub fn init(cfg: &mut web::ServiceConfig) {

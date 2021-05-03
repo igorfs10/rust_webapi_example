@@ -3,6 +3,8 @@ use std::sync::Arc;
 use async_trait::async_trait;
 use sqlx::{postgres::PgQueryResult, Pool, Postgres};
 
+// Trait para forçar a criação do CRUD padrão, é necessário setar o IdType na implementação
+// para definir o tipo que o id usa para essa entidade. Ex: u32 para INT, String para VARCHAR
 #[async_trait]
 pub trait Crud: Sized {
     type IdType;

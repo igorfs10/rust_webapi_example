@@ -1,8 +1,9 @@
 mod controllers;
 mod utils;
+mod structs;
 
 use actix_web::{web, App, HttpServer};
-use rust_rest_api_example_data::structs::state::State;
+use structs::state::State;
 use utils::configuration::ConfigurationFile;
 use utils::connection;
 
