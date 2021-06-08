@@ -8,6 +8,6 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-sqlx = { version = "0.5.2", features = [ "runtime-tokio-rustls", "postgres" ] }
-serde = { version = "1.0.125", features = ["derive"] }
+sqlx = { version = "0.5.5", features = [ "runtime-tokio-rustls", "postgres" ] }
+serde = { version = "1.0.126", features = ["derive"] }
 async-trait = "0.1.50"

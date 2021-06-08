@@ -1,9 +1,10 @@
 use std::env;
 use std::fs;
 
-use serde::{Deserialize, Serialize};
+use rust_rest_api_example_data::serde::{self, Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
+#[serde(crate = "self::serde")]
 pub struct ConfigurationFile {
     pub connection: String,
     pub server_address: String,

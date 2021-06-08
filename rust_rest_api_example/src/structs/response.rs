@@ -1,5 +1,6 @@
-use serde::{Deserialize, Serialize};
+use rust_rest_api_example_data::serde::{self, Deserialize, Serialize};
 #[derive(Serialize, Deserialize)]
+#[serde(crate = "self::serde")]
 pub struct Response<T> {
     pub message: String,
     pub result: Option<T>,

@@ -1,6 +1,6 @@
 mod controllers;
-mod utils;
 mod structs;
+mod utils;
 
 use actix_web::{web, App, HttpServer};
 use structs::state::State;
