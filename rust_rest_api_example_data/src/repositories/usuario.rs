@@ -45,9 +45,7 @@ impl Crud for Usuario {
         result
     }
 
-    async fn remove(
-        id: Self::IdType,
-    ) -> Result<PgQueryResult, sqlx::Error> {
+    async fn remove(id: Self::IdType) -> Result<PgQueryResult, sqlx::Error> {
         let result = sqlx::query("DELETE FROM USUARIOS WHERE ID = $1;")
             .bind(id)
             .execute(&**POOL)
