@@ -3,11 +3,23 @@ use crate::traits;
 
 use async_trait::async_trait;
 use sqlx::postgres::PgQueryResult;
+use sqlx::postgres::PgRow;
+use sqlx::{FromRow, Row};
 
 use structs::usuario::Usuario;
 use traits::crud::Crud;
 
 use super::super::POOL;
+
+// Mapeamento das colunas do banco para a struct
+impl<'c> FromRow<'c, PgRow> for Usuario {
+    fn from_row(row: &PgRow) -> Result<Self, sqlx::Error> {
+        Ok(Usuario {
+            id: row.get(0),
+            nome: row.get(1),
+        })
+    }
+}
 
 #[async_trait]
 impl Crud for Usuario {
