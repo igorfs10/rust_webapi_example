@@ -16,21 +16,12 @@ use std::sync::Arc;
 static POOL: Arc<Pool<Postgres>> = Arc::new(get_pool());
 
 fn get_pool() -> Pool<Postgres> {
-    let rt = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-        .unwrap();
-    let handle = rt.handle().clone();
+    let rt = tokio::runtime::Runtime::new().unwrap();
 
     rt.block_on(async {
-        handle
-            .spawn(async {
-                PgPoolOptions::new()
-                    .connect(&config::get_config("connection"))
-                    .await
-                    .unwrap()
-            })
+        PgPoolOptions::new()
+            .connect(&config::get_config("connection"))
             .await
+            .unwrap()
     })
-    .unwrap()
 }
