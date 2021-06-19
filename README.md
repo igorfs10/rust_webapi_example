@@ -1,2 +1,2 @@
-# Postgre_API
-Uma api simples em RUST que usa postgre. 
+# rust_webapi_example
+A simple actix webAPI using postgreSQL.
