@@ -13,4 +13,4 @@ use static_init::dynamic;
 use std::sync::Arc;
 
 #[dynamic]
-static POOL: Arc<Pool<Postgres>> = Arc::new(connection::get_pool());
+static DB_CONNECTION_POOL: Arc<Pool<Postgres>> = Arc::new(connection::get_db_connection_pool());

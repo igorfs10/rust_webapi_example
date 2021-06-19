@@ -9,7 +9,7 @@ use sqlx::{FromRow, Row};
 use structs::usuario::Usuario;
 use traits::base_repo::BaseRepo;
 
-use crate::POOL;
+use crate::DB_CONNECTION_POOL;
 
 // Mapeamento das colunas do banco para a struct
 impl<'c> FromRow<'c, PgRow> for Usuario {
@@ -27,7 +27,7 @@ impl BaseRepo for Usuario {
 
     async fn get_all() -> Result<Vec<Self>, sqlx::Error> {
         let result = sqlx::query_as("SELECT * FROM USUARIOS;")
-            .fetch_all(&**POOL)
+            .fetch_all(&**DB_CONNECTION_POOL)
             .await;
         result
     }
@@ -35,7 +35,7 @@ impl BaseRepo for Usuario {
     async fn get_by_id(id: Self::IdType) -> Result<Self, sqlx::Error> {
         let result = sqlx::query_as("SELECT * FROM USUARIOS WHERE ID = $1;")
             .bind(id)
-            .fetch_one(&**POOL)
+            .fetch_one(&**DB_CONNECTION_POOL)
             .await;
         result
     }
@@ -43,7 +43,7 @@ impl BaseRepo for Usuario {
     async fn insert(data: Self) -> Result<PgQueryResult, sqlx::Error> {
         let result = sqlx::query("INSERT INTO USUARIOS (NOME) VALUES($1);")
             .bind(data.nome)
-            .execute(&**POOL)
+            .execute(&**DB_CONNECTION_POOL)
             .await;
         result
     }
@@ -52,7 +52,7 @@ impl BaseRepo for Usuario {
         let result = sqlx::query("UPDATE USUARIOS SET NOME = $1 WHERE ID = $2;")
             .bind(data.nome)
             .bind(data.id)
-            .execute(&**POOL)
+            .execute(&**DB_CONNECTION_POOL)
             .await;
         result
     }
@@ -60,7 +60,7 @@ impl BaseRepo for Usuario {
     async fn delete(id: Self::IdType) -> Result<PgQueryResult, sqlx::Error> {
         let result = sqlx::query("DELETE FROM USUARIOS WHERE ID = $1;")
             .bind(id)
-            .execute(&**POOL)
+            .execute(&**DB_CONNECTION_POOL)
             .await;
         result
     }

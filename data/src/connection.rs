@@ -3,7 +3,7 @@ use sqlx::Pool;
 use sqlx::Postgres;
 use utils::config;
 
-pub fn get_pool() -> Pool<Postgres> {
+pub fn get_db_connection_pool() -> Pool<Postgres> {
     let rt = tokio::runtime::Runtime::new().unwrap();
 
     rt.block_on(async {
