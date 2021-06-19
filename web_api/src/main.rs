@@ -2,7 +2,7 @@ mod controllers;
 mod structs;
 
 use actix_web::{App, HttpServer};
-use rust_rest_api_example_utils::config;
+use utils::config;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

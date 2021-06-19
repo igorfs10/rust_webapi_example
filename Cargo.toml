@@ -1,6 +1,6 @@
 [workspace]
-members = ["rust_rest_api_example_data", "rust_rest_api_example_utils", "rust_rest_api_example"]
-default-members = ["rust_rest_api_example"]
+members = ["data", "business", "utils", "web_api"]
+default-members = ["web_api"]
 resolver = "2"
 
 [profile.release]

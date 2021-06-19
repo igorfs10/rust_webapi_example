@@ -1,5 +1,5 @@
 [package]
-name    = "rust_rest_api_example_utils"
+name    = "business"
 version = "0.0.1"
 edition = "2018"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
@@ -9,4 +9,4 @@ readme = "README.md"
 
 
 [dependencies]
-gjson = "0.8.0"
+data = { path = "../data" }

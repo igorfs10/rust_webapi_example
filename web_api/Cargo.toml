@@ -1,5 +1,5 @@
 [package]
-name    = "rust_rest_api_example"
+name    = "web_api"
 version = "0.0.1"
 edition = "2018"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
@@ -8,7 +8,8 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-rust_rest_api_example_data = { path = "../rust_rest_api_example_data" }
-rust_rest_api_example_utils = { path = "../rust_rest_api_example_utils" }
+data = { path = "../data" }
+utils = { path = "../utils" }
+business = { path = "../business" }
 actix-web = "4.0.0-beta.6"
 serde_json = "1.0.64"

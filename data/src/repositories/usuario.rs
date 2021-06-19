@@ -7,9 +7,9 @@ use sqlx::postgres::PgRow;
 use sqlx::{FromRow, Row};
 
 use structs::usuario::Usuario;
-use traits::crud::Crud;
+use traits::base_repo::BaseRepo;
 
-use super::super::POOL;
+use crate::POOL;
 
 // Mapeamento das colunas do banco para a struct
 impl<'c> FromRow<'c, PgRow> for Usuario {
@@ -22,7 +22,7 @@ impl<'c> FromRow<'c, PgRow> for Usuario {
 }
 
 #[async_trait]
-impl Crud for Usuario {
+impl BaseRepo for Usuario {
     type IdType = i64;
 
     async fn get_all() -> Result<Vec<Self>, sqlx::Error> {
@@ -40,7 +40,7 @@ impl Crud for Usuario {
         result
     }
 
-    async fn add(data: Self) -> Result<PgQueryResult, sqlx::Error> {
+    async fn insert(data: Self) -> Result<PgQueryResult, sqlx::Error> {
         let result = sqlx::query("INSERT INTO USUARIOS (NOME) VALUES($1);")
             .bind(data.nome)
             .execute(&**POOL)
@@ -57,7 +57,7 @@ impl Crud for Usuario {
         result
     }
 
-    async fn remove(id: Self::IdType) -> Result<PgQueryResult, sqlx::Error> {
+    async fn delete(id: Self::IdType) -> Result<PgQueryResult, sqlx::Error> {
         let result = sqlx::query("DELETE FROM USUARIOS WHERE ID = $1;")
             .bind(id)
             .execute(&**POOL)

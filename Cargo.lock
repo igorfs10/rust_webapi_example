@@ -331,6 +331,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "63396b8a4b9de3f4fdfb320ab6080762242f66a8ef174c49d8e19b674db4cdbe"
 
 [[package]]
+name = "business"
+version = "0.0.1"
+dependencies = [
+ "data",
+]
+
+[[package]]
 name = "byteorder"
 version = "1.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -455,6 +462,18 @@ checksum = "4857fd85a0c34b3c3297875b747c1e02e06b6a0ea32dd892d8192b9ce0813ea6"
 dependencies = [
  "generic-array",
  "subtle",
+]
+
+[[package]]
+name = "data"
+version = "0.0.1"
+dependencies = [
+ "async-trait",
+ "serde",
+ "sqlx",
+ "static_init",
+ "tokio",
+ "utils",
 ]
 
 [[package]]
@@ -1207,35 +1226,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust_rest_api_example"
-version = "0.0.1"
-dependencies = [
- "actix-web",
- "rust_rest_api_example_data",
- "rust_rest_api_example_utils",
- "serde_json",
-]
-
-[[package]]
-name = "rust_rest_api_example_data"
-version = "0.0.1"
-dependencies = [
- "async-trait",
- "rust_rest_api_example_utils",
- "serde",
- "sqlx",
- "static_init",
- "tokio",
-]
-
-[[package]]
-name = "rust_rest_api_example_utils"
-version = "0.0.1"
-dependencies = [
- "gjson",
-]
-
-[[package]]
 name = "rustc_version"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1844,6 +1834,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "utils"
+version = "0.0.1"
+dependencies = [
+ "gjson",
+]
+
+[[package]]
 name = "version_check"
 version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1917,6 +1914,17 @@ checksum = "a905d57e488fec8861446d3393670fb50d27a262344013181c2cdf9fff5481be"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "web_api"
+version = "0.0.1"
+dependencies = [
+ "actix-web",
+ "business",
+ "data",
+ "serde_json",
+ "utils",
 ]
 
 [[package]]
