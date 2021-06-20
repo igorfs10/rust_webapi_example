@@ -1,5 +1,5 @@
 [package]
-name    = "data"
+name    = "db"
 version = "0.0.1"
 edition = "2018"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
@@ -8,4 +8,9 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-serde = { version = "1.0.126", features = ["derive"] }
+sqlx = { version = "0.5.5", features = [ "runtime-tokio-rustls", "postgres" ] }
+async-trait = "0.1.50"
+static_init = "1.0.1"
+tokio = "1.7.0"
+utils = { path = "../utils" }
+data = { path = "../data" }

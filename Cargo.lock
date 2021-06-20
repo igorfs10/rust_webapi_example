@@ -335,6 +335,7 @@ name = "business"
 version = "0.0.1"
 dependencies = [
  "data",
+ "db",
 ]
 
 [[package]]
@@ -468,8 +469,15 @@ dependencies = [
 name = "data"
 version = "0.0.1"
 dependencies = [
- "async-trait",
  "serde",
+]
+
+[[package]]
+name = "db"
+version = "0.0.1"
+dependencies = [
+ "async-trait",
+ "data",
  "sqlx",
  "static_init",
  "tokio",

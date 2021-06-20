@@ -1,5 +1,5 @@
 [workspace]
-members = ["data", "business", "utils", "web_api"]
+members = ["data", "business", "utils", "web_api", "db"]
 default-members = ["web_api", "data"]
 resolver = "2"
 
