@@ -49,6 +49,7 @@ async fn get_by_id(path: web::Path<i64>) -> impl Responder {
     }
 }
 
+/// Param [Usuario]
 #[post("/usuarios")]
 async fn add(usuario: web::Json<Usuario>) -> impl Responder {
     let response: Response<bool>;

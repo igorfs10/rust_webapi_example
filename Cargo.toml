@@ -1,6 +1,6 @@
 [workspace]
 members = ["data", "business", "utils", "web_api"]
-default-members = ["web_api"]
+default-members = ["web_api", "data"]
 resolver = "2"
 
 [profile.release]
