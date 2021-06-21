@@ -7,7 +7,6 @@ repository = "https://github.com/igorfs10/rust_rest_api_example"
 license-file = "LICENSE"
 readme = "README.md"
 
-
 [dependencies]
 data = { path = "../data" }
 db = { path = "../db" }
