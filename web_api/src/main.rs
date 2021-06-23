@@ -9,7 +9,7 @@ async fn main() -> std::io::Result<()> {
     let server_address = config::get_config("server_address");
 
     println!("Running the server at {}", server_address);
-    HttpServer::new(move || App::new().configure(controllers::usuario::init))
+    HttpServer::new(move || App::new().configure(controllers::usuario_controller::init))
         .bind(&server_address)?
         .run()
         .await

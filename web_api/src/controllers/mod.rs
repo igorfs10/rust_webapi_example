@@ -1,3 +1,3 @@
 //! Controllers
 
-pub mod usuario;
+pub mod usuario_controller;

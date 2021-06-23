@@ -4,6 +4,7 @@ pub mod traits;
 
 mod connection;
 
+pub use async_trait;
 pub use sqlx;
 
 use sqlx::Pool;

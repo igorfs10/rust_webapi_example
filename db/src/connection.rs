@@ -13,3 +13,11 @@ pub fn get_db_connection_pool() -> Pool<Postgres> {
             .unwrap()
     })
 }
+
+// pub fn run_sync<T, U>(future: impl Future<Output = T>)-> U {
+//     let rt = tokio::runtime::Runtime::new().unwrap();
+
+//     let ret = rt.block_on(async{future})?;
+
+//     ret
+// }

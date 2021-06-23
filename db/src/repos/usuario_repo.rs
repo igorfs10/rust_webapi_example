@@ -6,7 +6,7 @@ use sqlx::postgres::PgQueryResult;
 use sqlx::postgres::PgRow;
 use sqlx::{FromRow, Row};
 
-use data::structs::usuario::Usuario;
+use data::structs::usuario::{IdTypeUsuario, Usuario};
 use structs::base::Base;
 use traits::base_repo::BaseRepo;
 
@@ -23,8 +23,9 @@ impl<'c> FromRow<'c, PgRow> for Base<Usuario> {
 }
 
 #[async_trait]
-impl BaseRepo<Usuario> for Base<Usuario> {
-    type IdType = i64;
+impl BaseRepo for Base<Usuario> {
+    type IdType = IdTypeUsuario;
+    type ModelType = Usuario;
 
     async fn get_all() -> Result<Vec<Usuario>, sqlx::Error> {
         let result = sqlx::query_as::<_, Self>("SELECT * FROM USUARIOS;")
